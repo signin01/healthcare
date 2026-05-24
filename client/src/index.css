@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ========== ANIMATIONS ========== */
+
+/* Page Load Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Hover Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Card Animations */
+@keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes cardShine {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Button Animations */
+@keyframes btnPulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Background Animation */
+@keyframes bgGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========== ANIMATION CLASSES ========== */
+
+/* Load Animations */
+.animate-fade-in { animation: fadeIn 0.6s ease-out; }
+.animate-slide-top { animation: slideInFromTop 0.5s ease-out; }
+.animate-slide-bottom { animation: slideInFromBottom 0.5s ease-out; }
+.animate-zoom { animation: zoomIn 0.5s ease-out; }
+
+/* Hover Animations */
+.hover-pulse:hover { animation: pulse 0.3s ease-in-out; }
+.hover-bounce:hover { animation: bounce 0.3s ease-in-out; }
+.hover-glow:hover { animation: glow 1s infinite; }
+.hover-shake:hover { animation: shake 0.3s ease-in-out; }
+
+/* Card Animations */
+.card-float { animation: cardFloat 3s ease-in-out infinite; }
+.card-float:hover { animation: cardFloat 0.5s ease-in-out; }
+
+/* Button Animations */
+.btn-pulse { animation: btnPulse 1.5s infinite; }
+
+/* ========== ELEMENT SPECIFIC STYLES ========== */
+
+/* Navbar Animation */
+.navbar {
+    animation: slideInFromTop 0.5s ease-out;
+}
+
+/* Hero Section Animation */
+.hero-section {
+    animation: zoomIn 0.6s ease-out;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    background-size: 200% 200%;
+    animation: zoomIn 0.6s ease-out, bgGradient 5s ease infinite;
+}
+
+/* Product Cards */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Product Images */
+.product-image {
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+/* Buttons */
+button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Button Ripple Effect */
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:active::after {
+    width: 100px;
+    height: 100px;
+}
+
+/* Cart Button Animation */
+.cart-btn {
+    transition: all 0.3s ease;
+}
+
+.cart-btn:active {
+    transform: scale(0.95);
+}
+
+/* Footer Animation */
+footer {
+    animation: slideInFromBottom 0.5s ease-out;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4caf50;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4caf50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Card Shine Effect */
+.card-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+    transform: rotate(25deg);
+    animation: cardShine 3s infinite;
+}
+
+/* Stats Cards Animation */
+.stat-card {
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Health Tools Bar Animation */
+.health-tools-bar {
+    animation: slideInFromTop 0.4s ease-out;
+}
+
+.health-tools-bar button {
+    transition: all 0.3s ease;
+}
+
+.health-tools-bar button:hover {
+    transform: translateY(-2px);
+    background: #4caf50 !important;
+    color: white !important;
+}
+
+/* Notification Animation */
+.notification {
+    animation: slideInFromTop 0.3s ease-out;
+}
+
+/* Product Grid Stagger Animation */
+.product-grid {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.product-grid > div {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+.product-grid > div:nth-child(1) { animation-delay: 0.05s; }
+.product-grid > div:nth-child(2) { animation-delay: 0.1s; }
+.product-grid > div:nth-child(3) { animation-delay: 0.15s; }
+.product-grid > div:nth-child(4) { animation-delay: 0.2s; }
+.product-grid > div:nth-child(5) { animation-delay: 0.25s; }
+.product-grid > div:nth-child(6) { animation-delay: 0.3s; }
+.product-grid > div:nth-child(7) { animation-delay: 0.35s; }
+.product-grid > div:nth-child(8) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    button:hover {
+        transform: translateY(-1px);
+    }
+}
